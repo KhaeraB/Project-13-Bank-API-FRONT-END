@@ -1,12 +1,13 @@
 
 import styled from "styled-components";
 
+
  export const HeaderNavbar = styled.div`
     display: flex; 
     flex-direction: row; 
     justify-content: space-between; 
     align-items:center; 
-    margin:5px; 
+    padding: 5px 20px;
  `; 
  export const LogoImg = styled.img`
       max-width: 100%;

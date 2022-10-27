@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Home from './views/Home';
 import Error from './views/Error';
-import Profil from './views/Profil';
+import User from './views/User';
 import Login from './views/Login'; 
 import Transactions from './views/Transactions';
 import Header from './components/Header'; 
@@ -18,7 +18,7 @@ root.render(
   <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/login' element={<Login/>} />
-      <Route path='/profil' element={<Profil/>} />
+      <Route path='/user' element={<User/>} />
       <Route path='/transactions' element={<Transactions/>} />
       <Route path='/*' element={<Error/>} />
   </Routes> 

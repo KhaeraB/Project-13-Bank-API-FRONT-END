@@ -1,10 +1,14 @@
-import { Container } from "react-bootstrap"
-export default function Login(){
-
-
-    return (
-        <Container className="d-flex align-items-center content">
-            <h1>LOGIN</h1>
-        </Container>
-    )
+import FormLogin from "../../components/FormLogin";
+import { MainBgDark, SignInContent, SignInIcon } from "./index.styles";
+export default function Login() {
+    
+  return (
+    <MainBgDark>
+      <SignInContent>
+        <SignInIcon className="fa fa-user-circle"></SignInIcon>
+        <h1>Sign In</h1>
+        <FormLogin />
+      </SignInContent>
+    </MainBgDark>
+  );
 }
