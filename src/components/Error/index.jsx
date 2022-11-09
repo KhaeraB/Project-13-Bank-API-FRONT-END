@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
-export default function Error(){
+const Error = () =>{
 
 
     return (
@@ -13,3 +13,4 @@ export default function Error(){
         </Container>
     )
 }
+export default Error

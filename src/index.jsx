@@ -1,29 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Home from './views/Home';
-import Error from './views/Error';
-import User from './views/User';
-import Login from './views/Login'; 
-import Transactions from './views/Transactions';
-import Header from './components/Header'; 
-import Footer from './components/Footer'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter , Routes, Route} from 'react-router-dom';
+import { Provider } from 'react-redux';
 import './style.scss'; 
+import { store } from './app/store';
+import App from './App';
+import { Header, Footer } from "./components/Layout/Layout";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router>
-  <Header/>
-  <Routes>
-      <Route path='/' element={<Home/>} />
-      <Route path='/login' element={<Login/>} />
-      <Route path='/user' element={<User/>} />
-      <Route path='/transactions' element={<Transactions/>} />
-      <Route path='/*' element={<Error/>} />
-  </Routes> 
-  <Footer/>
-</Router>
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/*" element={<App />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
 );
 
 

@@ -12,8 +12,16 @@ import {
   FeatureItemTitle,
 } from "./index.styles";
 import { home_data } from "../../mock/data";
-export default function ContentHome() {
-  return (
+
+/**
+ * Content for the Home Page
+ * @function ContentHome
+ * @param {any}
+ * @returns {JSX}
+ */
+
+const Public = () => {
+  const content = (
     <Container>
       <Hero>
         <HeroContent>
@@ -38,4 +46,6 @@ export default function ContentHome() {
       </Features>
     </Container>
   );
-}
+  return content;
+};
+export default Public;

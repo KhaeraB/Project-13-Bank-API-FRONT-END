@@ -1,6 +1,6 @@
-import EditUser from "../../components/EditUser";
+import EditUser from "../../../components/EditUser";
 import { MainBgDark } from "../Login/index.styles";
-import { balance_data } from "../../mock/data";
+import { balance_data } from "../../../mock/data";
 import {
   Account,
   AccountWrapper,
@@ -11,7 +11,7 @@ import {
   TransactionButton,
 } from "./index.styles";
 
-export default function User() {
+export default function Profil() {
   return (
     <MainBgDark>
       <EditUser />
