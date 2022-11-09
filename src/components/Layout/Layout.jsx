@@ -15,14 +15,15 @@ export const Header= () =>{
   const onLogout = ()=>{ 
     dispatch(logOut())
   }
-
   return (
    
     <HeaderNavbar>
       <NavLink to={"/"} className="nav-link">
         <LogoImg src={Logo} alt="argent Bank logo" href="/" />
       </NavLink>
-      {token ? ( 
+
+      {token ? (
+       
       <>
         <div className="mainNavItem">
           <FaUserCircle className="fa" />

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 
-import { useLoginMutation } from "../authApiSlice";
+import { useLoginMutation } from "../../features/auth/authApiSlice";
 import { Form } from "react-bootstrap";
 import {
   InputRemember,
@@ -14,7 +14,7 @@ import {
   SignInContent,
   SignInIcon,
 } from "./index.styles";
-import { logIn } from "../authSlice";
+import { logIn } from "../../features/auth/authSlice";
 
 const Login = () => {
   const userRef = useRef();

@@ -1,7 +1,7 @@
 
 import styled from "styled-components"
 import { Container } from "react-bootstrap"
-import { customTheme } from "../../../constants"
+import { customTheme } from "../../constants"
 
 export const MainBgDark = styled.main`
   display: flex;

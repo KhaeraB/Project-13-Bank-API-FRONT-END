@@ -13,15 +13,11 @@ const authSlice = createSlice({
             state.token = action.payload.body.token
             //console.log("Token", state.token)
         },
-        userEdit: (state, action) => {
-            state.firstName = action.payload.body.firstName
-            state.lastName = action.payload.body.lastName
-        },
         logOut: (state, action) => {
             state.email = null
             state.token = null
-            state.firstName = null
-            state.lastName = null
+            state.firstName = action.payload.body.firstName
+            state.lastName = action.payload.body.lastName
         }
     },
 })
