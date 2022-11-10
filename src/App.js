@@ -3,7 +3,7 @@ import RequireAuth from './features/auth/RequireAuth'
 import Layout from './components/Layout/Layout'
 
 import Public from './components/Public/Public'
-import Login from './components/Login'
+import Login from './features/auth/Login'
 import Error from './components/Error'
 import Profil from './components/Profil'
 
