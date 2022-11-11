@@ -1,7 +1,7 @@
 
 import styled from "styled-components"
 import { Container } from "react-bootstrap"
-import { customTheme } from "../../../constants"
+import { customTheme } from "../../utils/style/variable"
 
 export const MainBgDark = styled.main`
   display: flex;
@@ -19,11 +19,15 @@ export const SignInContent = styled(Container)`
   margin: 0 auto;
   margin-top: 3rem;
   padding: 2rem;
+  .fa{
+    font-size:${customTheme.fonts.xlarge};
+  }
   h1 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: bold;
     margin-block-start: 0.83em;
     margin-block-end: 0.83em;
+    margin: 0.5rem;
   }
 `;
 

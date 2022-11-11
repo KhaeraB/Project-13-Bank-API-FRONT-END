@@ -1,6 +1,6 @@
-import IconChat from '../assets/img/icon-chat.png'
-import IconMoney from '../assets/img/icon-money.png'
-import IconSecurity from '../assets/img/icon-security.png'
+import IconChat from '../../assets/icon-chat.png'
+import IconMoney from '../../assets/icon-money.png'
+import IconSecurity from '../../assets/icon-security.png'
 export const home_data = [
     {
         type: "chat",

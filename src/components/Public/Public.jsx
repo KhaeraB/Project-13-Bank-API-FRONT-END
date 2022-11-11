@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { home_data } from "../../data/mock/data";
 import {
   Hero,
   SrOnly,
@@ -11,7 +12,6 @@ import {
   FeatureIcon,
   FeatureItemTitle,
 } from "./index.styles";
-import { home_data } from "../../mock/data";
 
 /**
  * Content for the Home Page

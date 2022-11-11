@@ -1,62 +1,73 @@
-import { Link, Outlet } from "react-router-dom"
-import React from "react";
-import {FaUserCircle} from "react-icons/fa"
-import { HeaderNavbar, LogoImg, FooterContent, FooterText } from "./index.styles";
-import Logo from "../../assets/img/argentBankLogo.png";
-import { NavLink } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut, selectCurrentFirstName, selectCurrentToken } from "../../features/auth/authSlice";
+import React from "react";
+import { FaUserCircle } from "react-icons/fa";
+import {
+  HeaderNavbar,
+  LogoImg,
+  FooterContent,
+  FooterText,
+} from "./index.styles";
+import Logo from "../../assets/argentBankLogo.png";
+import { NavLink } from "react-router-dom";
+import { logout} from "../../features/authServices";
 
-export const Header= () =>{
-  const dispatch = useDispatch()
-  const userFirstName = useSelector(selectCurrentFirstName)
-  const token = useSelector(selectCurrentToken)
+export const Header = () => {
 
-  const onLogout = ()=>{ 
-    dispatch(logOut())
-  }
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { token } = useSelector((state) => state.userDataLogin);
+  const { firstName } = useSelector((state) => state.userDataProfile);
+console.log(token)
+  const handleLogout = () => {
+    dispatch(logout())
+    navigate("/");
+  };
   return (
-   
     <HeaderNavbar>
       <NavLink to={"/"} className="nav-link">
         <LogoImg src={Logo} alt="argent Bank logo" href="/" />
+        <h1 className="sr-only">Argent Bank</h1>
       </NavLink>
-
-      {token ? (
-       
-      <>
-        <div className="mainNavItem">
-          <FaUserCircle className="fa" />
-          <span>{userFirstName}</span>
-        
-        <Link to="/" className="mainNavItem"  onClick={onLogout}>
+      {!token ? (
+          <NavLink to={"/login"} className="nav-link">
+          <FaUserCircle />
+          Sign In
+        </NavLink>
+        ) : (
+          ''
+        )}
+        {token ? (
+          <div>
+            <FaUserCircle className="fa" />
+            <span>{firstName}</span>
+        </div>
+        ) : (
+          ''
+        )}
+        {token ? (
+          <NavLink to={"/"} className="nav-link" onClick={handleLogout}>
           <i className="fa fa-sign-out"></i>
           Sign Out
-        </Link>
-        </div>
-      </>
-      ) : ( 
-      <NavLink to={"/login"} className="nav-link">
-        <i className="fa fa-user-circle"></i>
-        Sign In
-      </NavLink>
-      )
-    } 
-     
+        </NavLink>
+        ) : (
+          ''
+        )}
     </HeaderNavbar>
   );
-}
+};
 
 export const Footer = () => {
-    return (
-      <FooterContent>
-        <FooterText>Copyright 2020 Argent Bank</FooterText>
-      </FooterContent>
-    );
-}
+  return (
+    <FooterContent>
+      <FooterText>Copyright 2020 Argent Bank</FooterText>
+    </FooterContent>
+  );
+};
 
 const Layout = () => {
-    return <Outlet />
-}
+  return <Outlet />;
+};
 
-export default Layout
+export default Layout;

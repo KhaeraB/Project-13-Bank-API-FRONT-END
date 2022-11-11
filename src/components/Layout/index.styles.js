@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { customTheme } from "../../constants";
+import { customTheme } from "../../utils/style/variable";
+
 
  export const HeaderNavbar = styled.div`
     display: flex; 

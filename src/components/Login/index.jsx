@@ -1,10 +1,9 @@
-import { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
-import { useDispatch } from "react-redux";
-
-import { useLoginMutation } from "../authApiSlice";
 import { Form } from "react-bootstrap";
+import { FaUserCircle } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../features/authServices";
 import {
   InputRemember,
   SignInButton,
@@ -12,82 +11,55 @@ import {
   Label,
   MainBgDark,
   SignInContent,
-  SignInIcon,
 } from "./index.styles";
-import { logIn } from "../authSlice";
 
 const Login = () => {
-  const userRef = useRef();
-  const errRef = useRef();
-  const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
-  const [errMsg, setErrMsg] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [login, { isLoading }] = useLoginMutation();
-  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
+  const { error } = useSelector((state) => state.userDataLogin);
+  const { token } = useSelector((state) => state.userDataLogin);
 
-  useEffect(() => {
-    setErrMsg("");
-  }, [email, pwd]);
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const userData = await login({ email: email, password: pwd }).unwrap();
-      
-      dispatch(logIn({ ...userData, email }));
-      setEmail("");
-      setPwd("");
-      navigate("/profil");
-    } catch (err) {
-      if (!err?.originalStatus) {
-        // isLoading: true until timeout occurs
-        setErrMsg("No Server Response");
-      } else if (err.originalStatus === 400) {
-        setErrMsg("Missing Username or Password");
-      } else if (err.originalStatus === 401) {
-        setErrMsg("Unauthorized");
-      } else {
-        setErrMsg("Login Failed");
-      }
-      errRef.current.focus();
-    }
+    dispatch(login(email, password));
   };
 
-  const handleUserInput = (e) => setEmail(e.target.value);
+  useEffect(() => {
+    if (token) {
+      navigate("/profile");
+    }
+  }, [token, navigate]);
 
-  const handlePwdInput = (e) => setPwd(e.target.value);
+  // useEffect(() => {
+  //   setErrMsg("");
+  // }, [email, pwd]);
 
-  const content = isLoading ? (
-    <h1>Loading...</h1>
-  ) : (
+  const content = (
     <section className="login">
       <MainBgDark>
         <SignInContent>
-          <SignInIcon className="fa fa-user-circle"></SignInIcon>
+          <FaUserCircle className="fa" />
           <h1>Sign In</h1>
-          <p
-            ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
-            aria-live="assertive"
-          >
-            {errMsg}
-          </p>
+          {
+          error && (
+            <p>
+              <br />
+              {error}
+            </p>
+          )}
           <Form onSubmit={handleSubmit}>
             <InputWrapper>
               <Label htmlFor="username">Username</Label>
               <input
                 type="text"
                 id="email"
-                ref={userRef}
                 value={email}
-                autoComplete= "off"
-                onChange={handleUserInput}
+                onChange={(e) => setEmail(e.target.value)}
+                autoComplete="off"
                 required
               />
             </InputWrapper>
@@ -96,8 +68,9 @@ const Login = () => {
               <input
                 type="password"
                 id="password"
-                onChange={handlePwdInput}
-                value={pwd}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="off"
                 required
               />
             </InputWrapper>
@@ -106,7 +79,9 @@ const Login = () => {
               <label htmlFor="remember-me">Remember me</label>
             </InputRemember>
 
-            <SignInButton>Sign In</SignInButton>
+            <SignInButton type="submit" name="Login">
+              Sign In
+            </SignInButton>
           </Form>
         </SignInContent>
       </MainBgDark>

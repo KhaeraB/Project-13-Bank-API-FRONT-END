@@ -1,5 +1,24 @@
 import styled from "styled-components";
 
+export const HeaderAccount = styled.div`
+  margin-bottom: 2rem;
+`;
+export const WelcomUser = styled.h1`
+  color: #fff;
+  margin-bottom: 2rem;
+`;
+export const EditButton = styled.button`
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+`;
+
+export const FormEdit = styled.form`
+  display: none;
+`;
+
 export const Account = styled.section`
   display: flex;
   justify-content: space-between;
@@ -16,15 +35,6 @@ export const Account = styled.section`
   @media (min-width: 720px) {
     flex-direction: row;
   }
-`;
-
-export const MainBgDark = styled.main`
-  display: flex;
-  flex-direction: column;
-  min-height: 84vh;
-  flex: 1;
-  background-color: #12002b;
-  margin: 0;
 `;
 
 export const AccountWrapper = styled.div`
@@ -67,22 +77,3 @@ export const TransactionButton = styled.button`
     width: 200px;
   }
 `;
-
-export const HeaderAccount = styled.div`
-    margin-bottom: 2rem;
-`
-export const WelcomUser = styled.h1`
-  color: #fff;
-  margin-bottom: 2rem;
-`;
-export const EditButton = styled.button`
-  border-color: #00bc77;
-  background-color: #00bc77;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px;
-`;
-
-export const FormEdit = styled.form`
-    display:none; 
-`

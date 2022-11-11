@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
-import HeroMain from "../../assets/img/bank-tree.jpeg";
+import HeroMain from "../../assets/bank-tree.jpeg";
 
 export const Hero = styled(Container)`
   background-image: url(${HeroMain});
