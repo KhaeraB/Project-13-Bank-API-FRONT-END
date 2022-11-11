@@ -8,9 +8,13 @@ import {
   PROFILE_UPDATE,
 } from "../actions/type";
 
+//init token from local storage
+const token = localStorage.getItem('token') ? localStorage.getItem("token") : null
+//console.log(token)
+
 const intialState = {
   isLogged: false,
-  token: "",
+  token,
   success: false, 
   firstName: '', 
   lastName: '' 

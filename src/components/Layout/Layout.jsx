@@ -10,7 +10,7 @@ import {
 } from "./index.styles";
 import Logo from "../../assets/argentBankLogo.png";
 import { NavLink } from "react-router-dom";
-import { logout} from "../../features/authServices";
+import authService from "../../features/authServices";
 
 export const Header = () => {
 
@@ -18,10 +18,11 @@ export const Header = () => {
   const navigate = useNavigate();
 
   const { token } = useSelector((state) => state.userDataLogin);
-  const { firstName } = useSelector((state) => state.userDataProfile);
-console.log(token)
+  const { firstName } = useSelector((state) => state.userDataLogin);
+
+
   const handleLogout = () => {
-    dispatch(logout())
+    dispatch(authService.logout())
     navigate("/");
   };
   return (
