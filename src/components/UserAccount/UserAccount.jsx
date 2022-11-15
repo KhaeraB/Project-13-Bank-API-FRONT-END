@@ -11,7 +11,7 @@ import {
   
 export const UserAccount = (props) => {
     return (
-        <Account>
+        <Account index={props.index}>
         <AccountWrapper >
           <AccountTitle>{props.title}</AccountTitle>
           <AccountAmount>{props.amount}</AccountAmount>

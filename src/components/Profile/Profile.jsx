@@ -3,13 +3,9 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { MainBgDark } from "../Login/index.styles";
 import { balance_data } from "../../data/mock/data";
-import { UserAccount } from '../Account/account';
-import {
-  EditButton,
-  WelcomUser,
-  FormEdit,
-  HeaderAccount,
-} from "./index.styles";
+import { UserAccount } from '../UserAccount/UserAccount';
+import { EditUserHeader } from '../EditUser/EditUser';
+
 
 export default function Profile() {
   document.title = "Argent Bank - Account Page"
@@ -20,32 +16,20 @@ export default function Profile() {
   useEffect(() => {
     if (!token) {
       navigate('/')
+     
     }
+    
   }, [token, navigate])
   
   return (
     
     <MainBgDark>
-      <HeaderAccount>
-        <div>
-          <WelcomUser>Welcome back </WelcomUser>
-          <EditButton>Edit Name</EditButton>
-        </div>
-        <FormEdit>
-          <div>
-            <input type="text" />
-            <input type="text" />
-          </div>
-          <div>
-            <button type="submit">Save</button>
-            <button>Cancel</button>
-          </div>
-        </FormEdit>
-      </HeaderAccount>
+      <EditUserHeader/>
       <h2 className="sr-only">Accounts</h2>
-      {balance_data.map((item) => {
+      {balance_data.map((item, index) => {
         return (
             <UserAccount
+            index={index}
             title={item.title}
             amount={item.amount}
             description={item.description}/>

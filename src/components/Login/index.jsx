@@ -3,7 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../features/authServices";
+import { login } from "../../features/auth/authServices";
 import {
   InputRemember,
   SignInButton,
@@ -12,6 +12,8 @@ import {
   MainBgDark,
   SignInContent,
 } from "./index.styles";
+
+
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -33,11 +35,8 @@ const Login = () => {
       navigate("/profile");
     }
   }, [token, navigate]);
-
-  // useEffect(() => {
-  //   setErrMsg("");
-  // }, [email, pwd]);
-
+  
+ 
   const content = (
     <section className="login">
       <MainBgDark>
@@ -45,6 +44,7 @@ const Login = () => {
           <FaUserCircle className="fa" />
           <h1>Sign In</h1>
           {
+            
           error && (
             <p>
               <br />

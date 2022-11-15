@@ -1,21 +1,23 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { legacy_createStore as createStore, applyMiddleware, combineReducers } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
-import { user_reducer, login_reducer } from '../features/authSlice'
 import { persistStore, persistReducer } from 'redux-persist'
+import { login_reducer, user_reducer } from '../features/auth/authSlice'
 import storage from 'redux-persist/lib/storage'
+
 
 const persistConfig = {
   key: 'root',
   storage,
 }
 
-const rootReducer = combineReducers({
+const reducers = combineReducers({
   userDataLogin: login_reducer,
   userDataProfile: user_reducer,
 })
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const persistedReducer = persistReducer(persistConfig, reducers)
 
 const middleware = [thunk]
 

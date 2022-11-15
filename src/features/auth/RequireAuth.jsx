@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Navigate, Outlet } from 'react-router-dom'
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
 
 /**
@@ -9,13 +9,14 @@ import { Navigate, Outlet } from 'react-router-dom'
  * @returns {JSX.Element} RequireAuth component
  */
 const RequireAuth = () => {
-  const {token}= useSelector((state)=> state.auth)
+  const { token } = useSelector((state) => state.userDataLogin);
+  const location = useLocation(); 
 
-  if(!token){ 
+
     return (
-      <Navigate to="/login"/>
+      token
+      ? <Outlet /> // return child path
+      : <Navigate to="/login" state={{ from: location }} replace />
     )
-  }
-  return <Outlet/>//restitue les routes enfants
 }
 export default RequireAuth

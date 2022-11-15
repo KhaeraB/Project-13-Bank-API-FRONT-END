@@ -2,20 +2,18 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  PROFILE_SUCCESS,
-  PROFILE_FAIL,
-  PROFILE_RESET,
-  PROFILE_UPDATE,
-} from "../actions/type";
+  USER_SUCCESS,
+  USER_FAIL,
+  USER_RESET,
+  USER_UPDATE,
+} from "../../actions/actions";
 
-//init token from local storage
-const token = localStorage.getItem('token') ? localStorage.getItem("token") : null
-//console.log(token)
+//init state
 
 const intialState = {
   isLogged: false,
-  token,
-  success: false, 
+  token : null,
+  isSuccess: false, 
   firstName: '', 
   lastName: '' 
 };
@@ -37,20 +35,20 @@ export const login_reducer = (state = intialState, action) => {
 
 export const user_reducer = (state = intialState, action) => {
   switch (action.type) {
-    case PROFILE_SUCCESS:
+    case USER_SUCCESS:
       return {
         firstName: action.payload.body.firstName,
         lastName: action.payload.body.lastName,
       }
-    case PROFILE_UPDATE:
+    case USER_UPDATE:
       return {
-        success: true,
+        isSuccess: true,
         firstName: action.payload.body.firstName,
         lastName: action.payload.body.lastName,
       }
-    case PROFILE_FAIL:
+    case USER_FAIL:
       return { error: action.payload }
-    case PROFILE_RESET:
+    case USER_RESET:
       return {
         firstName: null,
         lastName: null,
@@ -59,4 +57,3 @@ export const user_reducer = (state = intialState, action) => {
       return state
   }
 }
-
