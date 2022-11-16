@@ -11,8 +11,14 @@ import {
 
 const BASE_URL = "http://localhost:3001/api/v1/user/";
 
-// Login action
-
+/**
+ *  Login action
+ *  To Post Email Pwd to API to access user profile page 
+ * @name API
+ * @param {any} email
+ * @param {any} password
+ * @returns {data}
+ */
 export const login = (email, password) => async (dispatch) => {
   try {
     const { data } = await axios.post(
@@ -34,8 +40,14 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 
-// User's profile action
 
+/**
+ * User's profile action
+ * Access to profile page from login page with Post submit to API
+ * @name API
+ * @param {any} token
+ * @returns {data}
+ */
 export const accessUserProfile = (token) => async (dispatch) => {
   try {
     const config = {
@@ -63,8 +75,14 @@ export const accessUserProfile = (token) => async (dispatch) => {
   }
 }
 
-// User's update profile
 
+/**
+ * User's update profile action 
+ * @param {any} token
+ * @param {any} editedFirstName
+ * @param {any} editedLastName
+ * @returns {any}
+ */
 export const editProfile = (token, editedFirstName, editedLastName) => async (dispatch) => {
     try {
       const config = {
@@ -92,8 +110,10 @@ export const editProfile = (token, editedFirstName, editedLastName) => async (di
     }
   }
 
-// Logout action
-
+/**
+ * Logout action
+ * @returns {dispatch:Type}
+ */
 export const logout = () => async (dispatch) => {
   dispatch({ type: LOGOUT })
   dispatch({ type: USER_RESET })

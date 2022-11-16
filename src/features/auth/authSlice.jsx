@@ -9,7 +9,6 @@ import {
 } from "../../app/actions/actions";
 
 //init state
-
 const intialState = {
   isLogged: false,
   token : null,
@@ -18,6 +17,12 @@ const intialState = {
   lastName: '' 
 };
 
+/**
+ * Reducer for LoginUser With Actions 
+ * @param {any} state=intialState
+ * @param {any} action
+ * @returns {any}
+ */
 export const login_reducer = (state = intialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
@@ -33,6 +38,12 @@ export const login_reducer = (state = intialState, action) => {
 
 
 
+/**
+ * Reducers for User Profile With Actions 
+ * @param {any} state=intialState
+ * @param {any} action
+ * @returns {any}
+ */
 export const user_reducer = (state = intialState, action) => {
   switch (action.type) {
     case USER_SUCCESS:

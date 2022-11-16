@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../features/auth/authServices";
 import {
@@ -14,16 +14,24 @@ import {
 } from "./index.styles";
 
 
-
+/**
+ * Create the logi form for access to Account page
+ * @component
+ * @returns {JSX.Element} Login component
+ */
 const Login = () => {
+  document.title = "Argent Bank - Login";
+ // Hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // data for post the form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const { error } = useSelector((state) => state.userDataLogin);
-  const { token } = useSelector((state) => state.userDataLogin);
+  const errRef = useRef();
+  // token and error
+ 
+  const { token, error } = useSelector((state) => state.userDataLogin);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,23 +42,24 @@ const Login = () => {
     if (token) {
       navigate("/profile");
     }
-  }, [token, navigate]);
-  
- 
+      
+  }, [token, navigate, error]);
+
   const content = (
     <section className="login">
       <MainBgDark>
         <SignInContent>
           <FaUserCircle className="fa" />
           <h1>Sign In</h1>
-          {
-            
-          error && (
-            <p>
-              <br />
-              {error}
-            </p>
-          )}
+
+          <p
+            ref={errRef}
+            className={error ? "errmsg" : "offscreen"}
+            aria-live="assertive"
+          >
+            {error}
+          </p>
+         
           <Form onSubmit={handleSubmit}>
             <InputWrapper>
               <Label htmlFor="username">Username</Label>

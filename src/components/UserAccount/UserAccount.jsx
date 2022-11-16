@@ -6,9 +6,18 @@ import {
     AccountDescription,
     AccountWrapperCta,
     TransactionButton,
-  } from "../Profile/index.styles";
+  } from "./index.styles";
   import PropTypes from 'prop-types'
   
+/**
+ * Create Account Wrapper component 
+ * @compoment 
+ * @param {any} {title
+ * @param {any} amount
+ * @param {any} description
+ * @param {any} editBgColor} Change color to button Edit Name from Profile Page
+ * @returns {any}
+ */
 const UserAccount = ({title, amount, description, editBgColor}) => {
 
   
@@ -26,6 +35,7 @@ const UserAccount = ({title, amount, description, editBgColor}) => {
     )
   }
 export default UserAccount
+
 //Proptypes
 UserAccount.propTypes = {
     title: PropTypes.string.isRequired,

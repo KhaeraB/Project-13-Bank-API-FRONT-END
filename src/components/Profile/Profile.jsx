@@ -14,14 +14,27 @@ import {
 } from "./index.styles";
 import { editProfile } from "../../features/auth/authServices";
 
-export default function Profile() {
+/**
+ * Display the Account elements with profile and access to edit user name form  
+ * @component
+ * @returns {JSX.Element} Profile component
+ */
+const Profile = () =>{
+
+  document.title = "Argent Bank - Account Page";
+
+  // react , redux hooks 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { token, success } = useSelector((state) => state.userDataLogin);
   const { firstName, lastName } = useSelector((state) => state.userDataProfile);
 
+  // form values elements
   const [editedFirstName, setEditedFirstName] = useState();
   const [editedLastName, setEditedLastName] = useState();
+
+  //edit form state
   const [editUserNameForm, setEditUserNameForm] = useState("");
   const [editBgColor, setEditBgColor] = useState(false);
 
@@ -39,9 +52,6 @@ export default function Profile() {
     }
       setEditBgColor()
   };
-
-  document.title = "Argent Bank - Account Page";
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (!token) {
@@ -109,3 +119,4 @@ export default function Profile() {
     </MainBgDark>
   );
 }
+export default Profile

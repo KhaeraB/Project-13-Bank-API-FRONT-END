@@ -13,6 +13,12 @@ import Logo from "../../assets/argentBankLogo.png";
 import { NavLink } from "react-router-dom";
 import { logout } from "../../features/auth/authServices";
 
+
+/**
+ * Creation of the header navigation bar 
+ * @component
+ * @returns {JSX.Element} Header Navigation component
+ */
 export const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -60,7 +66,11 @@ export const Header = () => {
     </HeaderNavbar>
   );
 };
-
+/**
+ * Creation of the footer
+ * @component
+ * @returns {JSX.Element} footer component
+ */
 export const Footer = () => {
   return (
     <FooterContent>
@@ -69,6 +79,11 @@ export const Footer = () => {
   );
 };
 
+/**
+ * Access to the Path Child
+ * @compoment
+ * @returns {JSX.Element}
+ */
 const Layout = () => {
   return <Outlet />;
 };

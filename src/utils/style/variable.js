@@ -2,7 +2,7 @@ export const  customTheme = {
     colors: {
       primary500: "#2C3E50",
       neutral100: "#5256ec",
-      neutral200: "#9b9eac",
+      neutral200: "#00bc77",
       neutral400: "#dde2ea", 
       neutral500: "#74798c",
       neutral800: "#12002B",
