@@ -21,27 +21,5 @@ export const home_data = [
         text: "We use top of the line encryption to make sure your data and money is always safe.",
     },
 ]
-export const balance_data = [
-    {
-        index: 1,
-        title : "Argent Bank Checking (x8349)", 
-        amount : "$2,082.79", 
-        description: "Available Balance", 
-        
-    },
-    {
-        index: 2,
-        title : "Argent Bank Savings (x6712)", 
-        amount : "$10,928.42", 
-        description: "Available Balance",
-        
-    },
-    {
-        index: 3,
-        title : "Argent Bank Credit Card (x8349)", 
-        amount : "$184.30", 
-        description: "Current Balance",
-        
-    }
-]
+
 

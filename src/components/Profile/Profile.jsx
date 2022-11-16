@@ -2,8 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { MainBgDark } from "../Login/index.styles";
-import { balance_data } from "../../data/mock/data";
-import { UserAccount } from "../UserAccount/UserAccount";
+import  UserAccount  from "../UserAccount/UserAccount";
 import {
   EditButton,
   WelcomUser,
@@ -24,7 +23,7 @@ export default function Profile() {
   const [editedFirstName, setEditedFirstName] = useState();
   const [editedLastName, setEditedLastName] = useState();
   const [editUserNameForm, setEditUserNameForm] = useState("");
-  const [editBgColor, setEditBgColor] = useState("");
+  const [editBgColor, setEditBgColor] = useState(false);
 
   const editNameButton = (e) => {
     e.preventDefault();
@@ -38,6 +37,7 @@ export default function Profile() {
     if ({ success }) {
       setEditUserNameForm((current) => !current);
     }
+      setEditBgColor()
   };
 
   document.title = "Argent Bank - Account Page";
@@ -88,16 +88,24 @@ export default function Profile() {
         )}
       </HeaderAccount>
       <h2 className="sr-only">Accounts</h2>
-      {balance_data.map((item, index) => {
-        return (
           <UserAccount
-            index={item.index}
-            title={item.title}
-            amount={item.amount}
-            description={item.description}
+          editBgColor={editBgColor}
+          title="Argent Bank Checking (x8349)"
+          amount="$2,082.79"
+          description="Available Balance"
           />
-        );
-      })}
+          <UserAccount
+          editBgColor={editBgColor}
+          title="Argent Bank Savings (x6712)"
+          amount="$10,928.42"
+          description="Available Balance"
+          />
+          <UserAccount
+          editBgColor={editBgColor}
+          title="Argent Bank Credit Card (x8349)"
+          amount="$184.30"
+          description="Current Balance"
+          />
     </MainBgDark>
   );
 }

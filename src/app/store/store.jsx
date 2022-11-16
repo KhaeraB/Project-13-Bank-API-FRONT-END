@@ -2,7 +2,7 @@ import { legacy_createStore as createStore, applyMiddleware, combineReducers } f
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
-import { login_reducer, user_reducer } from '../features/auth/authSlice'
+import { login_reducer, user_reducer } from '../../features/auth/authSlice'
 import storage from 'redux-persist/lib/storage'
 
 

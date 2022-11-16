@@ -9,27 +9,28 @@ import {
   } from "../Profile/index.styles";
   import PropTypes from 'prop-types'
   
-export const UserAccount = (props) => {
+const UserAccount = ({title, amount, description, editBgColor}) => {
 
   
     return (
-        <Account index={props.index}>
+        <Account>
         <AccountWrapper >
-          <AccountTitle>{props.title}</AccountTitle>
-          <AccountAmount>{props.amount}</AccountAmount>
-          <AccountDescription>{props.description}</AccountDescription>
+          <AccountTitle>{title}</AccountTitle>
+          <AccountAmount>{amount}</AccountAmount>
+          <AccountDescription>{description}</AccountDescription>
         </AccountWrapper>
         <AccountWrapperCta>
-          <TransactionButton>View transactions</TransactionButton>
+          <TransactionButton className={editBgColor ? 'buttonPurple' : "buttonGreen"}>View transactions</TransactionButton>
         </AccountWrapperCta>
       </Account>
     )
   }
-
+export default UserAccount
 //Proptypes
 UserAccount.propTypes = {
     title: PropTypes.string.isRequired,
     amount: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    editBgColor: PropTypes.bool, 
   }
 
