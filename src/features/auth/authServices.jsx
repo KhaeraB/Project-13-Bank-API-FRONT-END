@@ -7,7 +7,7 @@ import {
   USER_FAIL,
   USER_RESET,
   USER_UPDATE,
-} from "../../actions/actions"
+} from "../../app/actions/actions"
 
 const BASE_URL = "http://localhost:3001/api/v1/user/";
 

@@ -20,7 +20,6 @@ export const Header = () => {
   const { token } = useSelector((state) => state.userDataLogin);
   const { firstName } = useSelector((state) => state.userDataProfile);
 
-console.log(firstName)
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");

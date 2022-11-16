@@ -6,7 +6,7 @@ import {
   USER_FAIL,
   USER_RESET,
   USER_UPDATE,
-} from "../../actions/actions";
+} from "../../app/actions/actions";
 
 //init state
 

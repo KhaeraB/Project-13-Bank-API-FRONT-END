@@ -8,7 +8,7 @@ export const MainBgDark = styled.main`
   flex-direction: column;
   min-height: 84vh;
   flex: 1;
-  background-color: #12002b;
+  background-color: ${customTheme.colors.neutral800};
   margin: 0;
 `;
 

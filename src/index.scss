@@ -12,7 +12,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 
-  .nav-link{
+  .nav-link {
     text-decoration: none;
     margin-right: 0.5rem;
     font-weight: bold;
@@ -20,13 +20,12 @@ body {
     align-items: center;
     display: flex;
     flex-direction: row;
-    &:hover{
-        text-decoration: underline; 
+    &:hover {
+      text-decoration: underline;
     }
     .errmsg {
       color: firebrick;
     }
-    
   }
   .sr-only {
     border: 0 !important;
@@ -40,5 +39,24 @@ body {
     position: absolute !important;
     width: 1px !important;
     white-space: nowrap !important; /* 3 */
+  }
+
+  .bgLight {
+    background-color: #dde2ea;
+  }
+  .bgDark {
+    background-color: #12002b;
+  }
+  .titleDark {
+    color: #12002b;
+  }
+  .titleLight {
+    color: white;
+  }
+  .buttonDark {
+    background-color: #5256ec;
+  }
+  .buttonLight {
+    background-color: #00bc77;
   }
 }

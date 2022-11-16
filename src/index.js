@@ -5,11 +5,11 @@ import App from "./App";
 
 import { Header, Footer } from "./components/Layout/Layout";
 import { persistor } from "./store/store"
-import store from "./store/store"
 import { Provider } from "react-redux";
 
 import { BrowserRouter} from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
+import store from "./store/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
