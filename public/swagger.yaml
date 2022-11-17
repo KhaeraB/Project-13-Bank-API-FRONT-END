@@ -113,6 +113,8 @@ paths:
         
   /user/profile/transactions:
     get:
+      security:
+        - Bearer: []
       tags:
         - User Transactions
       summary: User Account 
@@ -172,7 +174,7 @@ paths:
           description: Internal Server Error
     post:
       security:
-        Bearer: []
+       - Bearer: []
       tags:
         - User Transactions
       summary: Post a transaction
