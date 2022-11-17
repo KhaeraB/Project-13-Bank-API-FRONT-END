@@ -109,7 +109,174 @@ paths:
         "400":
           description: Invalid Fields
         "500":
+        description: Internal Server Error
+        
+  /user/profile/transactions:
+    get:
+      tags:
+        - User Transactions
+      summary: User Account 
+      description: Fetching API for getting all accounts 
+      parameters:
+        - in: header
+          name: Autorization
+          description:  Attach Bearer JWT token
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: User accounts retrieved successully
+          schema:
+            $ref: "#/definitions/Transactions"
+        "400":
+          description: Bad request accounts not found
+        "500":
           description: Internal Server Error
+ 
+  /user/profile/transactions/{transactionId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Transactions
+      summary: Single Transaction
+      description: Single transaction of user account 
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: accountId
+          description: User account id
+          type: integer
+          required: true
+        - in: path
+          name: transactionId
+          description: Transaction id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transactions retrieved successfully
+          schema:
+            $ref: '#/definitions/Transactions'
+        '400':
+          description: Bad Request. User account "id"/ transaction id  must be an integer and larger than 0.
+        '500':
+          description: Internal Server Error
+    post:
+      security:
+        Bearer: []
+      tags:
+        - User Transactions
+      summary: Post a transaction
+      description: Add a transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: transactionId
+          description: Transaction id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Transaction posted successully
+          schema:
+            $ref: "#/definitions/Transactions"
+        '400':
+          description: Bad Request. User account "id"/ transaction id  must be an integer and larger than 0.
+        '500':
+          description: Internal Server Error
+          
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - User Transactions
+      summary: Delete a transaction
+      description: Deleting a transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: transactionId
+          description: Transaction id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction deleted successfully
+          schema:
+            tpye: object
+            properties:
+              status:
+                type: integer
+                example: 200
+              message:
+                type: string
+                example: Success
+        '400':
+          description: Bad Request. User account "id"/ transaction id  must be an integer and larger than 0.
+        '500':
+          description: Internal Server Error
+    patch:
+      security:
+          - Bearer: []
+      tags:
+      - User Transactions
+      summary: Update of an existing transaction
+      description: API for update of an existing transaction notes or category
+      parameters:
+      - in: header
+        name: Authorization
+        description: Attach Bearer JWT token
+        type: string
+        required: true
+      - in: path
+        name: accountId
+        description: User account id
+        type: integer
+        required: true
+      - in: path
+        name: transactionId
+        description: Transaction id
+        required: true
+        type: integer
+      - in: body
+        name: body
+        required: true
+        description: Update transaction's informations
+        schema:
+            $ref: '#/definitions/TransactionsUpdate'
+        produces:
+          - application/json
+      responses:
+        '200':
+          description: Transaction updated successully
+          schema:
+            $ref: '#/definitions/Transactions'
+        '400':
+          description: Bad Request. User account "id"/ transaction id  must be an integer and larger than 0.
+        '500':
+          description: Internal Server Error
+
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -164,3 +331,37 @@ definitions:
         type: string
       lastName:
         type: string
+  #Transactions      
+  Transaction:
+    type: 'object'
+    properties:
+      id:
+        type: 'string'
+      transactionData:
+        type: 'object'
+        properties:
+          date:
+            type: 'string'
+          description:
+            type: 'string'
+          amount:
+            type: 'number'
+          detail:
+            type: 'object'
+            properties:
+              typeoftransaction:
+                type: 'string'
+              category:
+                type: 'string'
+              notes:
+                type: 'string'
+  # Transactions Update
+  TransactionsUpdate:
+    type: 'object'
+    properties:
+      category:
+        type: 'string'
+        description: Update transaction's informations category
+      notes:
+        type: 'string'
+        description: Update transaction's informations notes
