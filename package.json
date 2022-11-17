@@ -19,6 +19,7 @@
     "redux-persist": "^6.0.0",
     "sass": "^1.56.1",
     "styled-components": "^5.3.6",
+    "swagger-ui-react": "^4.15.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
