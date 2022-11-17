@@ -117,12 +117,17 @@ paths:
         - Bearer: []
       tags:
         - User Transactions
-      summary: User Account 
-      description: Fetching API for getting all accounts 
+      summary: Getting all accounts by month 
+      description: Fetching API for getting all accounts By month 
       parameters:
         - in: header
           name: Autorization
           description:  Attach Bearer JWT token
+          type: string
+          required: true
+        - in: path
+          name: Month
+          description: All transactions by Month 
           type: string
           required: true
       produces:
